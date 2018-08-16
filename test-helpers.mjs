@@ -45,13 +45,9 @@ export const createIoServerAsync = ioMiddleware => {
   });
 };
 
-export const createIoClientAsync = (port, cookie) => {
+export const createIoClientAsync = (port, query) => {
   return new Promise((resolve, reject) => {
-    const client = createIoClient(`http://localhost:${port}`, {
-      extraHeaders: {
-        Cookie: cookie
-      }
-    });
+    const client = createIoClient(`http://localhost:${port}`, { query });
     client.on("connect", () => {
       resolve(client);
     });

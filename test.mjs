@@ -27,7 +27,7 @@ spec.after(async () => {
 });
 
 spec("should deny unauthorized user using deny mode(default)", async () => {
-  const error = await rejects(createIoClientAsync(port, "session="));
+  const error = await rejects(createIoClientAsync(port));
   const expectMessage = "Decoding Firebase session cookie failed";
   strictEqual(error.message.slice(0, expectMessage.length), expectMessage);
 });
@@ -45,7 +45,7 @@ spec(
       });
     });
 
-    const client = await createIoClientAsync(port, `session=${session}`);
+    const client = await createIoClientAsync(port, { session });
     await new Promise(async resolve => {
       client.emit("claims", claims => {
         strictEqual(claims.email, "i59naga@icloud.com");

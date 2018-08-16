@@ -1,14 +1,10 @@
-import cookie from "cookie";
-
 export default (app, options = {}) => {
   const auth = app.auth();
   const opts = Object.assign({ deny: true, cache: true }, options);
 
   const cache = {};
   const middleware = async (client, next) => {
-    const { session = "" } = cookie.parse(
-      client.handshake.headers.cookie || ""
-    );
+    const { session = "" } = client.handshake.query;
     if (!session && !opts.deny) {
       return next();
     }

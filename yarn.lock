@@ -904,7 +904,7 @@ convert-source-map@^1.1.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
 
-cookie@0.3.1, cookie@^0.3.1:
+cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
@@ -1043,8 +1043,8 @@ eastasianwidth@^0.2.0:
   resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
 
 eastern@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/eastern/-/eastern-0.1.0.tgz#5018052e0333f5c351499ef42589fb999a558359"
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/eastern/-/eastern-0.1.1.tgz#5d3f87714a139eda0588edcbd897903ded92eaa8"
   dependencies:
     chalk "^2.4.1"
     exit-hook "^2.0.0"

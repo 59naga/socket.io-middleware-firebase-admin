@@ -43,8 +43,8 @@ io.use(ioMiddleware);
 server.listen(() => {
   const { port } = server.address();
   const client = createIoClient(`http://localhost:${port}`, {
-    extraHeaders: {
-      Cookie: "session=" //+await firebaseAdmin.auth().createSessionCookie(idToken)
+    query: {
+      session: ""//await firebaseAdmin.auth().createSessionCookie(idToken)
     }
   });
   client.on("connect", error => {
