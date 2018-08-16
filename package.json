@@ -1,6 +1,6 @@
 {
   "name": "socket.io-middleware-firebase-admin",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "a socket.io middleware firebaseAdmin.verifySessionCookie",
   "scripts": {
     "start": "abby format, test --watch \"*.mjs\"",
