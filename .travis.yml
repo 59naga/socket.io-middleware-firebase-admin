@@ -1,0 +1,23 @@
+sudo: false
+cache: yarn
+language: node_js
+branches:
+  except:
+    - /^v[0-9]/
+node_js:
+  - 10
+before_deploy:
+  - rm .gitignore
+  - yarn build
+  
+notifications:
+  email: false
+
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: i59naga@icloud.com
+  api_key:
+    secure: pd5XRPZTpyERlaFPrP/kCtNmoXSiFE2xMhZbNbeOUQWBUcxt55WbDnvKqrStuXuXn5ICURwH7Cy4SxOM+4+fqJa71Kujyv+nAV7AJwQV8edFfi4gLbPYZMzACL03BGVoIQSwTgFo+0bpYvxlEtIM9OEbMcIdkWBXuW122olctpIwACRpgl6uT34e/GIODTH1MYXkX7lx98f2DogQW3LGR5F9rLGd7dKEGGubY55WHMULNSV6sQDlrGJjVxben8Rmbhk6E5lrvIajHL4jvuCSZdhsxX/DMbMJdJNQzEkB+vFdWC/6iNl94zA26KJkoov/n4ahOvk2n224zPeYUIHPIHw4vlE7jC1L7R2Xq01CcjFm/QSmVdxb83LvK0Jd19TAtfj/qwpLxnwMkJ0C/Az2FGpr+QFT7tC8qwc8ikw4MGGlevky2+ZjChQf0e5cGSan/CwMNKuzk0uB0vdpfwGfZC8Bep3dKZPm5v3TETuKH//nDJmE7Ptu3m197jnxAqQxA4E2rqyFtSr2ONtx36+vwNJoYTE8SAHE0zgvx4/gCTdnGNNmlho3AF7aVS9lJD/HUikgTJ3EGmH39WsjqXhj6jcqb3+i2QxKK4xIWQlHc6eFNU4WDEYzhFi+3j0QBKFVUJYBRAOKtZOhNU1LrDhLrHxaUE3DZXhDg2f631m7Vdg=
+  on:
+    repo: 59naga/socket.io-middleware-firebase-admin

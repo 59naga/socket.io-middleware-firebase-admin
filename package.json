@@ -1,0 +1,41 @@
+{
+  "name": "@59naga/socket.io-middleware-firebase-admin",
+  "version": "0.0.0-pre",
+  "description": "",
+  "scripts": {
+    "start": "abby format, test --watch \"*.mjs\"",
+    "test": "node --experimental-modules test.mjs",
+    "format": "prettier \"*.mjs\" --write",
+    "build": "babel index.mjs --out-file index.js",
+    "postversion": "git push --follow-tags && conventional-github-releaser -p atom"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-rc.1",
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-rc.1",
+    "abigail": "^1.9.5",
+    "assert-exception": "^2.0.0",
+    "babel-plugin-add-module-exports": "^0.3.3",
+    "bluebird": "^3.5.1",
+    "eastern": "^0.1.0",
+    "prettier": "^1.14.2",
+    "request": "^2.88.0",
+    "server-destroy": "^1.0.1",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
+  },
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "firebase-admin": "^6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/59naga/socket.io-middleware-firebase-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/59naga/socket.io-middleware-firebase-admin/issues"
+  },
+  "homepage": "https://github.com/59naga/socket.io-middleware-firebase-admin#readme",
+  "author": "59naga <i59naga@icloud.com>",
+  "license": "MIT"
+}
