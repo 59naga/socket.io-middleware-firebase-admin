@@ -1,6 +1,6 @@
 {
   "name": "@59naga/socket.io-middleware-firebase-admin",
-  "version": "0.0.0-pre",
+  "version": "0.0.0",
   "description": "",
   "scripts": {
     "start": "abby format, test --watch \"*.mjs\"",
