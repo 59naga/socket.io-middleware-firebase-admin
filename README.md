@@ -21,7 +21,7 @@ yarn add socket.io-middleware-firebase-admin
 API
 ---
 
-## createIoMiddlewareFirebaseAdmin(app, (options = {})): middleware
+## createIoMiddlewareFirebaseAdmin(app, options = {}): middleware
 
 ```js
 import { createServer } from "http";
