@@ -1,13 +1,17 @@
 {
   "name": "socket.io-middleware-firebase-admin",
   "version": "0.0.0",
-  "description": "",
+  "description": "a socket.io middleware firebaseAdmin.verifySessionCookie",
   "scripts": {
     "start": "abby format, test --watch \"*.mjs\"",
     "test": "node --experimental-modules test.mjs",
     "format": "prettier \"*.mjs\" --write",
     "build": "babel index.mjs --out-file index.js",
     "postversion": "git push --follow-tags && conventional-github-releaser -p atom"
+  },
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "firebase-admin": "^6.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
@@ -24,10 +28,10 @@
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1"
   },
-  "dependencies": {
-    "cookie": "^0.3.1",
-    "firebase-admin": "^6.0.0"
-  },
+  "keywords": [
+    "socket.io-middleware",
+    "firebase-admin"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/59naga/socket.io-middleware-firebase-admin.git"

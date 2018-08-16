@@ -10,7 +10,7 @@ Socket.io Middleware firebase-admin
   </a>
 </p>
 
-a minimal BDD interface / reporter for [ESM Modules](https://nodejs.org/api/esm.html#esm_enabling)
+a socket.io middleware [firebaseAdmin.verifySessionCookie](https://firebase.google.com/docs/auth/admin/manage-cookies)
 
 Installation
 ---
@@ -20,7 +20,66 @@ yarn add socket.io-middleware-firebase-admin
 
 API
 ---
-TODO
+
+## createIoMiddlewareFirebaseAdmin({ credential }, (options = {})): middleware
+
+[initialize "Firebase Admin SDK" using `credential`](https://firebase.google.com/docs/admin/setup)
+
+```js
+import { createServer } from "http";
+import createIoServer from "socket.io";
+import createIoClient from "socket.io-client";
+
+import createIoMiddlewareFirebaseAdmin from "socket.io-middleware-firebase-admin";
+import credential from "./.credential";
+
+const server = createServer();
+const io = createIoServer(server);
+const ioMiddleware = createIoMiddlewareFirebaseAdmin({ credential });
+
+io.use(ioMiddleware);
+
+server.listen(() => {
+  const { port } = server.address();
+  const client = createIoClient(`http://localhost:${port}`, {
+    extraHeaders: {
+      Cookie: "session=" //+await firebaseAdmin.auth().createSessionCookie(idToken)
+    }
+  });
+  client.on("connect", error => {
+    const decodedClaims = ioMiddleware.getCache(client.id);
+    console.log(decodedClaims);
+  });
+});
+```
+
+### `options`
+
+* `options.deny`= true: boolean
+  Deny connections of users who couldn't authenticate.
+
+* `options.cache`= true: boolean
+  Cache claim of authenticated user.
+
+## ioMiddleware.getCache(clientId): decodedClaims
+
+Returns the claim of the authenticated user.
+
+```js
+console.log(ioMiddleware.getCache(client.id));
+// { iss:
+//    'https://session.firebase.google.com/socketio-middleware-demo1',
+//   aud: 'socketio-middleware-demo1',
+//   auth_time: 1534417139,
+//   user_id: 'CUCPCuD50xgKeEfVggJ1fYQYNOj1',
+//   sub: 'CUCPCuD50xgKeEfVggJ1fYQYNOj1',
+//   iat: 1534417140,
+//   exp: 1534417440,
+//   email: 'i59naga@icloud.com',
+//   email_verified: false,
+//   firebase:
+//    { identities: { email: [Array] }, sign_in_provider: 'custom' }
+```
 
 License
 ---
