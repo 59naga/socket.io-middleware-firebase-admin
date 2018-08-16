@@ -21,9 +21,7 @@ yarn add socket.io-middleware-firebase-admin
 API
 ---
 
-## createIoMiddlewareFirebaseAdmin({ credential }, (options = {})): middleware
-
-[initialize "Firebase Admin SDK" using `credential`](https://firebase.google.com/docs/admin/setup)
+## createIoMiddlewareFirebaseAdmin(app, (options = {})): middleware
 
 ```js
 import { createServer } from "http";
@@ -35,7 +33,10 @@ import credential from "./.credential";
 
 const server = createServer();
 const io = createIoServer(server);
-const ioMiddleware = createIoMiddlewareFirebaseAdmin({ credential });
+const app = firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(credential)
+});
+const ioMiddleware = createIoMiddlewareFirebaseAdmin(app);
 
 io.use(ioMiddleware);
 

@@ -8,17 +8,21 @@ import {
   createIoClientAsync,
   createSession
 } from "./test-helpers";
+import firebaseAdmin from "firebase-admin";
 import createFirebaseAdminMiddlware from "./";
 import credential from "./.credential";
 
-let middleware, server, port;
+let app, middleware, server, port;
 spec.before(async () => {
-  middleware = createFirebaseAdminMiddlware({ credential });
+  app = firebaseAdmin.initializeApp({
+    credential: firebaseAdmin.credential.cert(credential)
+  });
+  middleware = createFirebaseAdminMiddlware(app);
   server = await createIoServerAsync(middleware);
   port = server.address().port;
 });
 spec.after(async () => {
-  middleware.firebaseAdminClose();
+  app.delete();
   server.destroy();
 });
 

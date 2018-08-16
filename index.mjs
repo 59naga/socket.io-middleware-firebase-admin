@@ -1,11 +1,7 @@
-import firebaseAdmin from "firebase-admin";
 import cookie from "cookie";
 
-export default ({ credential }, options = {}) => {
-  const app = firebaseAdmin.initializeApp({
-    credential: firebaseAdmin.credential.cert(credential)
-  });
-  const auth = firebaseAdmin.auth();
+export default (app, options = {}) => {
+  const auth = app.auth();
   const opts = Object.assign({ deny: true, cache: true }, options);
 
   const cache = {};
@@ -40,9 +36,6 @@ export default ({ credential }, options = {}) => {
   };
   middleware.deleteCache = key => {
     delete cache[key];
-  };
-  middleware.firebaseAdminClose = () => {
-    app.delete();
   };
 
   middleware.extra = {
