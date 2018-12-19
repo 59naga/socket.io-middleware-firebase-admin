@@ -12,9 +12,9 @@ export default (app, options = {}) => {
     try {
       const claims = await auth.verifySessionCookie(session, true);
       if (opts.cache) {
-        middleware.setCache(client.id, claims);
+        middleware.setCache(client, claims);
         client.on("disconnect", () => {
-          middleware.deleteCache(client.id);
+          middleware.deleteCache(client);
         });
       }
     } catch (error) {
@@ -24,14 +24,14 @@ export default (app, options = {}) => {
     }
     next();
   };
-  middleware.setCache = (key, value) => {
-    return (cache[key] = value);
+  middleware.setCache = (client, value) => {
+    return (cache[client.id] = value);
   };
-  middleware.getCache = key => {
-    return cache[key];
+  middleware.getCache = client => {
+    return cache[client.id];
   };
-  middleware.deleteCache = key => {
-    delete cache[key];
+  middleware.deleteCache = client => {
+    delete cache[client.id];
   };
 
   middleware.extra = {

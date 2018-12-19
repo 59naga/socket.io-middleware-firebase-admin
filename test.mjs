@@ -1,5 +1,4 @@
 import Promise from "bluebird";
-import spec from "eastern";
 import { strictEqual } from "assert";
 import { rejects } from "assert-exception";
 
@@ -13,7 +12,7 @@ import createFirebaseAdminMiddlware from "./";
 import credential from "./.credential";
 
 let app, middleware, server, port;
-spec.before(async () => {
+it.before(async () => {
   app = firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(credential)
   });
@@ -21,18 +20,18 @@ spec.before(async () => {
   server = await createIoServerAsync(middleware);
   port = server.address().port;
 });
-spec.after(async () => {
+it.after(async () => {
   app.delete();
   server.destroy();
 });
 
-spec("should deny unauthorized user using deny mode(default)", async () => {
+it("should deny unauthorized user using deny mode(default)", async () => {
   const error = await rejects(createIoClientAsync(port));
   const expectMessage = "Decoding Firebase session cookie failed";
   strictEqual(error.message.slice(0, expectMessage.length), expectMessage);
 });
 
-spec(
+it(
   "should allow authorized user, and middleware have user claims cache(default)",
   async () => {
     const session = await createSession(
@@ -41,7 +40,7 @@ spec(
     );
     server.io.on("connect", client => {
       client.on("claims", resolve => {
-        resolve(middleware.getCache(client.id));
+        resolve(middleware.getCache(client));
       });
     });
 

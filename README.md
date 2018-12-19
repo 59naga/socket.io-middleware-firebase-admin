@@ -48,7 +48,7 @@ server.listen(() => {
     }
   });
   client.on("connect", error => {
-    const decodedClaims = ioMiddleware.getCache(client.id);
+    const decodedClaims = ioMiddleware.getCache(client);
     console.log(decodedClaims);
   });
 });
@@ -62,12 +62,12 @@ server.listen(() => {
 * `options.cache`= true: boolean
   Cache claim of authenticated user.
 
-## ioMiddleware.getCache(clientId): decodedClaims
+## ioMiddleware.getCache(client): decodedClaims
 
 Returns the claim of the authenticated user.
 
 ```js
-console.log(ioMiddleware.getCache(client.id));
+console.log(ioMiddleware.getCache(client));
 // { iss:
 //    'https://session.firebase.google.com/socketio-middleware-demo1',
 //   aud: 'socketio-middleware-demo1',

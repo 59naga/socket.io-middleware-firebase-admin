@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "start": "abby format, test --watch \"*.mjs\"",
-    "test": "node --experimental-modules test.mjs",
+    "test": "eastern",
     "format": "prettier \"*.mjs\" --write",
     "build": "babel index.mjs --out-file index.js",
     "postversion": "git push --follow-tags && conventional-github-releaser -p atom"
@@ -22,7 +22,8 @@
     "assert-exception": "^2.0.0",
     "babel-plugin-add-module-exports": "^0.3.3",
     "bluebird": "^3.5.1",
-    "eastern": "^0.1.0",
+    "eastern": "^2.0.1",
+    "eastern-cli": "^1.0.0",
     "firebase-admin": "^6.0.0",
     "prettier": "^1.14.2",
     "request": "^2.88.0",
